@@ -1,0 +1,12 @@
+{
+  "run_timestamp": "2026-06-20T13:13:26.417450",
+  "lcs_mean": 0.6977,
+  "lcs_std": 0.2392,
+  "low_confidence_count": 12615,
+  "mid_confidence_count": 22666,
+  "high_confidence_count": 53139,
+  "labels_corrected": 10794,
+  "correction_rate_pct": 12.21,
+  "avg_slte_gain_tree_auc": 0.0351,
+  "avg_slte_gain_param_auc": 0.017
+}
