@@ -27,7 +27,7 @@ While synthetic data generation (e.g., via CTGAN) offers a promising avenue for 
 ├── notebooks/
 │   ├── Initial_Experiments.ipynb        # TSTR baseline and multi-ratio mixing experiments
 │   ├── SLTE_Pipeline.ipynb # SLTE implementation, label evaluation, and filtering
-│   └── 
+│   └── Analysis_Figures.ipynb # Collecting results, figurs
 │
 ├── results/
 │   ├── tstr_results.csv / .json      # Comprehensive raw performance metrics across classifiers
