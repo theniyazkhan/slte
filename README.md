@@ -1,47 +1,42 @@
-# Can Synthetic Data Replace Real Data? Evaluating the Efficacy, Limits, and Label Trustworthiness of Generative Data in Supervised Learning
+# Synthetic Data Efficacy in Supervised Learning (SLTE)
 
-This repository contains the official implementation, replication package, and experimental results for the **SLTE (Synthetic Label Trustworthiness Estimation)** framework. This research was presented at the *International Conference on Emerging Frontiers in Advanced Sciences and Technologies (EFAST 2026)* and is currently under review at the *Arabian Journal for Science and Engineering (AJSE)*.
-
----
-
-## 📌 Project Overview
-While synthetic tabular data generation (e.g., via CTGAN) offers a promising avenue for privacy-preserving AI in sensitive domains like healthcare, its limits in supervised learning are often overlooked. This study systematically evaluates the Train-Synthetic-Test-Real (TSTR) protocol across multiple mixing ratios, empirical controls, and machine learning classifiers.
-
-### Key Findings
-* **The 20% Threshold:** Mixing synthetic data remains reliable up to a 20% ratio; performance degradation accelerates significantly as synthetic proportions increase beyond 60%.
-* **Directional Label Asymmetry:** Systematic label evaluation demonstrates that mislabeled generative samples follow directional flip patterns driven by reference-set neighborhood dynamics in imbalanced tabular distributions.
-* **The SLTE Framework:** SLTE estimates sample-level label trustworthiness and filters out corrupted or destabilizing synthetic instances, recovering lost downstream model performance across standard classifiers.
+This repository contains the complete replication code, preprocessing pipelines, experimental benchmarks, and journal revision artifacts for evaluating synthetic tabular data generation (CTGAN) and downstream supervised learning efficacy.
 
 ---
 
-## 📂 Repository Structure
+## Dataset
+
+Experiments are conducted on the [Medical Appointment No-Shows Dataset](https://www.kaggle.com/datasets/joniarroba/noshowappointments) (`MedicalAppointment.csv`):
+* **Sample Size**: 110,527 patient appointment records
+* **Class Distribution**: ~4:1 class imbalance (No-Show vs. Show)
+* **Features Extracted**: Patient demographics, scheduling lead time, appointment temporal features (`ScheduledMonth`, day of week), medical conditions, and SMS reminders.
+
+---
+
+## Repository Structure
 
 ```text
-├── data/
-│   ├── MedicalAppointment.csv        # Baseline public dataset (No-Show records)
-│   ├── synthetic_full.csv            # Full synthetic dataset generated via CTGAN
-│   └── lcs_distribution.csv          # Label Trustworthiness / LCS distribution scores
+├── MedicalAppointment.csv          # Raw Kaggle source dataset (110,527 records)
+├── Initial_Experiments.ipynb       # Exploratory data analysis and baseline exploratory runs
+├── SLTE_Pipeline.ipynb             # Core pipeline: preprocessing, CTGAN generation, TSTR evaluation
+├── Analysis_Figures.ipynb          # Reproduction scripts for all manuscript figures and tables
+├── baseline_results.json           # Baseline model performances on real-only data
+├── day2_summary_log.json           # Execution logs and model training metadata
+├── delta_slte_vs_noSlte.csv        # Performance delta (Δ) between SLTE and baseline configurations
+├── key_numbers_for_paper.json      # Central statistics and numerical values reported in the paper
+├── lcs_distribution.csv            # Longest common subsequence metrics for sequence similarity
+├── results_pivot_accuracy.csv      # Formatted accuracy matrix across models and runs
+├── slte_results.csv                # Primary SLTE experimental results across classifier suites
+├── synthetic_full.csv              # Full synthetic dataset generated via CTGAN
+├── tstr_results.csv                # Train on Synthetic, Test on Real (TSTR) benchmark metrics
+├── tstr_results.json               # Serialized TSTR evaluation outputs
 │
-├── notebooks/
-│   ├── Initial_Experiments.ipynb     # TSTR baseline and multi-ratio mixing experiments
-│   ├── SLTE_Pipeline.ipynb           # Core SLTE implementation, evaluation, and filtering
-│   └── Analysis_Figures.ipynb        # Visualization generation and result aggregation
-│
-├── results/
-│   ├── tstr_results.csv / .json      # Comprehensive raw performance metrics across classifiers
-│   ├── baseline_results.json         # Real-data-only control baseline metrics
-│   ├── slte_results.csv              # Model performance after applying SLTE filtering
-│   ├── delta_slte_vs_noSlte.csv      # Comparative performance recovery analysis
-│   └── Paper_Results_All_Tables.xlsx # Compiled tables used in the final manuscript
-│
-├── revision/                         # AJSE journal revision suite & ablation experiments
-│   ├── revise_slte.ipynb             # Master revision notebook (pipeline, controls & ablations)
-│   ├── synthetic_nolog.csv           # Unlogged synthetic generation benchmark data
-│   ├── slte_all_ratios.csv           # Extended evaluation across fine-grained mixing ratios
-│   ├── real_only_learning_curve.csv  # Sample-efficiency learning curve benchmarks on real data
-│   ├── reference_set_ablation.csv    # Sensitivity analysis on reference set size and balance
-│   ├── stage_ablation_results.csv    # Ablation benchmarks isolating individual SLTE components
-│   ├── seed_variance_results.csv     # Multi-seed stability and variance test results
-│   └── dcr_privacy_results.csv       # Distance to Closest Record (DCR) privacy evaluation
-│
-└── README.md
+└── revision/                       # Journal revision suite: statistical controls, ablations, & privacy audits
+    ├── revise_slte.ipynb           # Master execution notebook for all revision experiments
+    ├── dcr_privacy_results.csv     # Distance to Closest Record (DCR) privacy evaluation results
+    ├── real_only_learning_curve.csv# Sample efficiency curve across real-data subsample sizes
+    ├── reference_set_ablation.csv  # Sensitivity analysis across reference set sample sizes
+    ├── seed_variance_results.csv   # Stability across multiple random initialization seeds
+    ├── slte_all_ratios.csv         # Augmentation sweep across synthetic-to-real ratios
+    ├── stage_ablation_results.csv  # Component-wise ablation of pipeline processing stages
+    └── synthetic_nolog.csv         # Synthetic benchmark generated without log transformations
