@@ -1,0 +1,21 @@
+Arm,Classifier,AUC,F1
+No-SLTE,Logistic Regression,0.5889,0.3408
+No-SLTE,Naive Bayes,0.5632,0.0179
+No-SLTE,Decision Tree,0.6468,0.3993
+No-SLTE,Random Forest,0.633,0.0441
+No-SLTE,Gradient Boosting,0.6873,0.0009
+Stage 2 Only (kNN Labels),Logistic Regression,0.5969,0.3366
+Stage 2 Only (kNN Labels),Naive Bayes,0.5984,0.109
+Stage 2 Only (kNN Labels),Decision Tree,0.6481,0.4076
+Stage 2 Only (kNN Labels),Random Forest,0.6835,0.0154
+Stage 2 Only (kNN Labels),Gradient Boosting,0.7095,0.0004
+Stage 3 Only (Weights),Logistic Regression,0.5991,0.1479
+Stage 3 Only (Weights),Naive Bayes,0.5786,0.0075
+Stage 3 Only (Weights),Decision Tree,0.6594,0.3478
+Stage 3 Only (Weights),Random Forest,0.6354,0.0472
+Stage 3 Only (Weights),Gradient Boosting,0.6978,0.0
+Full SLTE (Stage 2 + 3),Logistic Regression,0.5962,0.3029
+Full SLTE (Stage 2 + 3),Naive Bayes,0.5987,0.0954
+Full SLTE (Stage 2 + 3),Decision Tree,0.6499,0.4043
+Full SLTE (Stage 2 + 3),Random Forest,0.6839,0.0128
+Full SLTE (Stage 2 + 3),Gradient Boosting,0.7114,0.0004

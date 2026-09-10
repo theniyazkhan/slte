@@ -1,0 +1,16 @@
+Reference_Size,N_Ref,Classifier,AUC,F1
+"1,000",1000,Logistic Regression,0.5785,0.3072
+"1,000",1000,Naive Bayes,0.5743,0.0519
+"1,000",1000,Decision Tree,0.6055,0.2973
+"1,000",1000,Random Forest,0.6125,0.011
+"1,000",1000,Gradient Boosting,0.7,0.0018
+"5,000",5000,Logistic Regression,0.5962,0.3002
+"5,000",5000,Naive Bayes,0.5921,0.1315
+"5,000",5000,Decision Tree,0.6232,0.3547
+"5,000",5000,Random Forest,0.6507,0.0137
+"5,000",5000,Gradient Boosting,0.7103,0.0
+"Full (88,420)",88420,Logistic Regression,0.5939,0.3019
+"Full (88,420)",88420,Naive Bayes,0.5987,0.0928
+"Full (88,420)",88420,Decision Tree,0.6663,0.4063
+"Full (88,420)",88420,Random Forest,0.6816,0.0154
+"Full (88,420)",88420,Gradient Boosting,0.714,0.0
